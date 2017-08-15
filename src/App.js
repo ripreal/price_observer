@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-import HelloWorld from './HelloWorld';
+import HelloWorldList from './HelloWorldList';
 
 class App extends Component {
   render() {
     return (
       <div className = "App">
-        <HelloWorld Name="John"/>
-        <HelloWorld Name="Mike"/>
+        <HelloWorldList/>
       </div>
     );
-  }
-
-  setState() {
-
   }
 }
 
