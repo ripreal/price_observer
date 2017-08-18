@@ -7,6 +7,7 @@ class AddGreeter extends Component {
     this.state = { greetingsName: ''};
     this.handleUpdate = this.handleUpdate.bind(this);
     this.addGreetings = this.addGreetings.bind(this);
+    this.removeGreetings = this.removeGreetings.bind(this);
   }
 
   handleUpdate(event) {
@@ -19,14 +20,21 @@ class AddGreeter extends Component {
         <input type="text" onChange={this.handleUpdate} 
         value={this.state.greetingsName}/>
         <button onClick={this.addGreetings}>Add</button>
+        <button onClick={this.removeGreetings}>Remove</button>
       </div>
     )
   }
 
   addGreetings() {
     this.props.addGreetings(this.state.greetingsName);
-    this.setState({greetingsName: ''});    
+    this.setState({greetingsName: ''});
   }
+
+  removeGreetings() {
+    this.props.removeGreetings(this.state.greetingsName);
+    this.setState({greetingsName:''});
+  }
+
 }
-  
+
 export default AddGreeter;

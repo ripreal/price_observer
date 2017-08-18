@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import HelloWorld from './HelloWorld';
 import './HelloWorldList.css';
 import AddGreeter from './AddGreeter';
+import RemoveGreeter from './RemoveGreeter';
 
 class HelloWorldList extends Component {
 
@@ -11,12 +12,13 @@ class HelloWorldList extends Component {
 
     this.renderGreetings = this.renderGreetings.bind(this);
     this.addGreetings = this.addGreetings.bind(this);
+    this.removeGreetings = this.removeGreetings.bind(this);
   }
 
   render() {
     return (
       <div className = "HelloWorldList">
-        <AddGreeter addGreetings={this.addGreetings}/>
+        <AddGreeter addGreetings={this.addGreetings} removeGreetings={this.removeGreetings}/>
         {this.renderGreetings()}
       </div>
     );
@@ -29,6 +31,11 @@ class HelloWorldList extends Component {
     });
     return procMap;
 
+  }
+
+  removeGreetings(deleteElement) {
+    let res = this.state.greetings.filter((el) => {return el != deleteElement} )
+    this.setState({greetings: res});
   }
 
   addGreetings(newName) {
