@@ -1,0 +1,56 @@
+.store {
+  background-image: url("../img/stores.png");
+  background-repeat: no-repeat;
+  display: block; }
+
+.store-amazon {
+  width: 40px;
+  height: 40px;
+  background-position: 0 0px; }
+
+.store-backcountry {
+  width: 40px;
+  height: 40px;
+  background-position: 0 -40px; }
+
+.store-campsaver {
+  width: 40px;
+  height: 40px;
+  background-position: 0 -80px; }
+
+.store-levis {
+  width: 40px;
+  height: 40px;
+  background-position: 0 -120px; }
+
+.store-moosejaw {
+  width: 40px;
+  height: 40px;
+  background-position: 0 -160px; }
+
+.store-rei {
+  width: 40px;
+  height: 40px;
+  background-position: 0 -200px; }
+
+.v-center-container {
+  height: 300px;
+  text-align: center;
+  /* align the inline(-block) elements horizontally */
+  font: 0/0 a;
+  /* remove the gap between inline(-block) elements */ }
+
+.v-center-container:before {
+  /* create a full-height inline block pseudo=element */
+  content: ' ';
+  display: inline-block;
+  vertical-align: middle;
+  /* vertical alignment of the inline element */
+  height: 100%; }
+
+.v-center-element {
+  display: inline-block;
+  vertical-align: middle;
+  /* vertical alignment of the inline element */
+  font: 16px/1 Arial sans-serif;
+  /* <-- reset the font property */ }
