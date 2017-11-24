@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Products from './products-page';
 //import $ from 'jquery';
 
 class Categories extends Component {
@@ -24,10 +25,7 @@ class Categories extends Component {
             }
             ]
         };
-    }
-
-    shouldComponentUpdate() {
-        return false;
+        this.toggleMenu = this.toggleMenu.bind(this);
     }
 
     render()  {
@@ -41,30 +39,37 @@ class Categories extends Component {
             </li>
           );
         });
-        return (
-        <nav id="main-nav">
-            <ul>
-                <li>
-                    <a href="#/products">
-                        <span><i class="fa fa-puzzle-piece" aria-hidden="true"></i>Products</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <span><i class="fa fa-folder-open-o" aria-hidden="true"></i>Categories</span>
-                    </a>
-                    <ul>
-                        {categories}
-                    </ul>
-                </li>
-                <li>
-                    <a href="#/about">
-                        <span><i class="fa fa-address-card-o" aria-hidden="true"></i>About</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        );
+        return [
+        <div id="wrapper">
+            <nav id="main-nav" key="categories">
+                <ul>
+                    <li>
+                        <a href="#/products">
+                            <span><i class="fa fa-puzzle-piece" aria-hidden="true"></i>Products</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span><i class="fa fa-folder-open-o" aria-hidden="true"></i>Categories</span>
+                        </a>
+                        <ul>
+                            {categories}
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#/about">
+                            <span><i class="fa fa-address-card-o" aria-hidden="true"></i>About</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>,
+        <Products key="products"/>
+        ];
+    }
+
+    toggleMenu(MenuName) {
+        alert(MenuName);
     }
 
     componentDidMount() {
@@ -77,6 +82,7 @@ class Categories extends Component {
         })
         window.$(".dropotron > li > a").on("click", (event) => {
                 window.$('#main-nav > ul').trigger("doCollapseAll");
+                this.toggleMenu(event.target);
             }
         );
     }

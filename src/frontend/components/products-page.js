@@ -78,7 +78,7 @@ class ProductsPage extends Component {
 
     render() {
         return (
-            <ProductList products = {this.state.products}/>
+            <div class="products"> <ProductList products = {this.state.products}/></div>
         );
     }
 }
