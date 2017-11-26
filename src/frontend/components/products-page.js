@@ -1,14 +1,15 @@
 
 import React, {Component} from 'react';
 import ProductList from './product-list';
+const  AppStore = require ('../stores/app-store');
 
 class ProductsPage extends Component {
 
     constructor(props) {
-        let t = "";
         super(props);
+        
         var products = [
-            {
+        {
             user: 'test',
             slug: "Les-Paul-electric-guitar",
             name: "Les Paul electric guitar",
@@ -58,12 +59,11 @@ class ProductsPage extends Component {
           },
           
         ];
-
-        this.state = {"products": products};
+        this.state = {products: products};
     }
 
     componentDidMount() {
-        //AppStore.addChangeListener(this._onChange);
+        AppStore.addChangeListener(this._onChange);
     }
 
     componentWillUnmount() {
@@ -71,14 +71,17 @@ class ProductsPage extends Component {
     }
 
     _onChange() {
-        //this.setState({
-        //products: AppStore.getProducts()
-        //});
+        this.setState({
+            products: AppStore.getProducts()
+        });
     }
 
     render() {
         return (
-            <div class="products"> <ProductList products = {this.state.products}/></div>
+            <div class="products"> <ProductList products = {this.state.products}/>
+                <button onClick={this._onChange} Style="float:right" id="test">test</button>
+            </div>
+            
         );
     }
 }

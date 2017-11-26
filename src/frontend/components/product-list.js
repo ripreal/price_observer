@@ -3,10 +3,6 @@ import React, {Component} from 'react';
 import ProductListItem  from './product-list-item';
 
 class ProductList extends Component {
-    
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         let productComponents;
