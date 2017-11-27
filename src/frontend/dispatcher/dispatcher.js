@@ -1,20 +1,18 @@
 
+const _listeners = [];
+
 class Dispatcher {
 
-    constructor() {
-        this.listeners = [];
+    static register(func) {
+        _listeners.push(func);
     }
 
-    register(func) {
-        this.listeners.push(func);
-    }
-
-    notify(action) {
-        this.listeners.forEach((func) => {
+    static dispatch(action) {
+        _listeners.forEach((func) => {
             if  (typeof func === 'function')
-                func.call(action);
+                func.call(this, action);
         });
     }
 }
 
-module.exports = new Dispatcher();
+module.exports =  Dispatcher;

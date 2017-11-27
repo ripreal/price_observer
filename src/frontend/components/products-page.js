@@ -60,6 +60,7 @@ class ProductsPage extends Component {
           
         ];
         this.state = {products: products};
+        this._onChange = this._onChange.bind(this);
     }
 
     componentDidMount() {
@@ -70,16 +71,19 @@ class ProductsPage extends Component {
         //AppStore.removeChangeListener(this._onChange);
     }
 
-    _onChange() {
-        this.setState({
-            products: AppStore.getProducts()
-        });
+    _onChange(products) {
+        this.setState(products);
+    }
+
+    dispatch () {
+        const ProductActions = require('../actions/product-actions');
+        ProductActions.updateProducts([]);
     }
 
     render() {
         return (
             <div class="products"> <ProductList products = {this.state.products}/>
-                <button onClick={this._onChange} Style="float:right" id="test">test</button>
+                <button onClick={this.dispatch.bind(this)} Style="float:right" id="test">test</button>
             </div>
             
         );
