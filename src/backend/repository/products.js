@@ -1,37 +1,34 @@
-
-const AWS = require("aws-sdk");
+import { throws } from "assert";
 
 const AWS_REGION = 'us-east';
 const TABLE_NAME = 'products';
 
 class Products {
     
+    set AWS(Value) {this._AWS = Value}
+    get AWS() {return this._AWS}
+
     constructor() {
 
-        AWS.config.update({
+        this._AWS = require("aws-sdk");
+
+        this._AWS.config.update({
             region: AWS_REGION,
             endpoint: "http://localhost:8000"
         });
 
-        this._docClient = new AWS.DynamoDB.DocumentClient();
+        this._docClient = new this._AWS.DynamoDB.DocumentClient();
     }
     
-    put(item) {
-
+    put(item)  {
+        
         let params = {
             TableName: TABLE_NAME,
             Item: item
         };
         
-        docClient.put(params).promise()
-        .then(
-            (data) => {
-                console.log("Added item:", JSON.stringify(data, null, 2));
-            },
-            (error) => {
-                console.error("Unable to add item. Error JSON:", JSON.stringify(error, null, 2));
-            }
-        )
+        return this._docClient.put(params).promise();
+
     }
 
     get(id) {
@@ -40,35 +37,28 @@ class Products {
             TableName: TABLE_NAME,
             Key: {"id": id}
         };
-        docClient.get(params).promise().then(
-            (data) => {
-                console.log("GetItem succeeded:", JSON.stringify(data, null, 2));
-            },
-            (error) => {
-                console.error("Unable to read item. Error JSON:", JSON.stringify(error, null, 2));
-            }
-        );
+        return this._docClient.get(params).promise();
     }
 
     list() {
-        
+        var params = {
+            TableName : TABLE_NAME,
+        };
+        return this._docClient.scan(params).promise();
     }
 
     delete(id) {
         
         var params = {
-            TableName:"Movies",
+            TableName: TABLE_NAME,
             Key:{
                 "id": id,
             }
         };
         
-        console.log("Attempting a conditional delete...");
-        docClient.delete(params).promise().then((data) => {
-            console.log("DeleteItem succeeded:", JSON.stringify(data, null, 2))
-        },
-        (error) => {
-            console.error("Unable to delete item. Error JSON:", JSON.stringify(err, null, 2));
-        });
+        return this._docClient.delete(params).promise();
     }
+
 }
+
+module.exports = new Products();
