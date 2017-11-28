@@ -9,14 +9,15 @@ it('testPutGetScanDelete', () => {
     Products.put(newItem).then((data) => {
         expect(data).toBeTruthy();
         testGet();
-    },
-    (error) => {
+    })
+    .catch((error) => {
         expect(error).toBeNull();
     });
 });
 
 function testGet() {
     Products.get(1).then((data) => {
+        console.log(data);
         expect(data).toBeTruthy();
         testList();
     },
@@ -29,8 +30,8 @@ function testList() {
     Products.list().then((data) => {
         let data_ob = JSON.stringify(data);
         expect(data.Count).toBe(1);
-    },
-    (error) => {
+    })
+    .catch((error) => {
         expect(error).toBeNull();
     });
 }
@@ -38,8 +39,8 @@ function testList() {
 function testDelete() { 
     Products.delete(1).then((data) => {
         expect(data).toBeTruthy()
-    },
-    (error) => {
+    })
+    .catch((error) => {
         expect(error).toBeNull();
     });
 }

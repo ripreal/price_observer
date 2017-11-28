@@ -10,4 +10,5 @@ it('testProductList', async function(){
     let products = await Amazon.productsList("guitar");
     console.log(products);
     expect(products.items).toBeTruthy();
+    expect(products.items).toBeNull();
 }, 5000)

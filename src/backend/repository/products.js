@@ -14,9 +14,11 @@ class Products {
 
         this._AWS.config.update({
             region: AWS_REGION,
-            endpoint: "http://localhost:8000"
+            endpoint: "http://localhost:8000",
+            credentials: new this._AWS.CognitoIdentityCredentials({
+                IdentityPoolId: 'us-east-foo-bar'
+              })
         });
-
         this._docClient = new this._AWS.DynamoDB.DocumentClient();
     }
     
@@ -31,11 +33,11 @@ class Products {
 
     }
 
-    get(id) {
+    get(item) {
         
         let params = {
             TableName: TABLE_NAME,
-            Key: {"id": id}
+            Key: {'id': item.id}
         };
         return this._docClient.get(params).promise();
     }
@@ -59,6 +61,45 @@ class Products {
         return this._docClient.delete(params).promise();
     }
 
+    createSheme() {
+        
+        let dynamodb = new this._AWS.DynamoDB();
+
+        let params = {
+            TableName : TABLE_NAME
+        };
+        
+        dynamodb.deleteTable(params, function(err, data) {
+            if (err) {
+                console.error("Unable to delete table. Error JSON:", JSON.stringify(err, null, 2));
+            } else {
+                console.log("Deleted table. Table description JSON:", JSON.stringify(data, null, 2));
+            }
+        });
+
+        params = {
+            TableName : TABLE_NAME,
+            KeySchema: [       
+                { AttributeName: "user", KeyType: "HASH"},  //Partition key
+                { AttributeName: "id", KeyType: "RANGE" }  //Sort key
+            ],
+            AttributeDefinitions: [       
+                { AttributeName: "user", AttributeType: "S" },
+                { AttributeName: "id", AttributeType: "N" }
+            ],
+            ProvisionedThroughput: {       
+                ReadCapacityUnits: 10, 
+                WriteCapacityUnits: 10
+            }
+        };
+        dynamodb.createTable(params, function(err, data) {
+            if (err) {
+                console.error("Unable to create table. Error JSON:", JSON.stringify(err, null, 2));
+            } else {
+                console.log("Created table. Table description JSON:", JSON.stringify(data, null, 2));
+            }
+        });
+    }
 }
 
 module.exports = new Products();

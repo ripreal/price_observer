@@ -15,7 +15,7 @@ class Amazon {
     async productsList(name) {
         let result = {
             items: [],
-            error: ""
+            error: null
         };
         await this._client.itemSearch({
             searchIndex: name,
@@ -28,5 +28,7 @@ class Amazon {
         return result;
     }
 }
+
+am = new Amazon();
 
 module.exports = new Amazon();
