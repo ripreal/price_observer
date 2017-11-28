@@ -5,3 +5,9 @@ it('testProductList', async function(){
     console.log(products);
     expect(products.items).toBeTruthy();
 }, 5000)
+
+it('testProductList', async function(){
+    let products = await Amazon.productsList("guitar");
+    console.log(products);
+    expect(products.items).toBeTruthy();
+}, 5000)

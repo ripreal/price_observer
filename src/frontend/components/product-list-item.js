@@ -25,13 +25,13 @@ class ProductListItem extends Component {
         <div className="col-md-3 col-sm-6 col-xs-10" key={this.props.name}>
             <div className="card-container manual-flip">
             <div className="card">
-
                 <div className="front">
                 <div className="content">
-                    <div className="v-center-container" style={{height:210 + 'px'}}>
+                    <h5> {this.props.name} </h5>
+                    <hr/>
+                    <div className="v-center-container" style={{height:180 + 'px'}}>
                         <img className="img-responsive v-center-element" src={this.props.imageUrl} alt={this.props.name}/>
                     </div>
-                    <h5> {this.props.name} </h5>
                     <hr/>
                     <StoreComponent product_stores={this.props.product_stores} cheapest={true} key={this.props.name}/>
                 </div>

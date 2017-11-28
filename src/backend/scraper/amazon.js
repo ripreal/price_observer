@@ -22,6 +22,7 @@ class Amazon {
         }).then((results) => {
             result.items = result;
         }).catch((error) => {
+            console.log(error);
             result.error = error;
         });
         return result;
