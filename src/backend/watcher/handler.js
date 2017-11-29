@@ -2,11 +2,9 @@
 import Repository from '../repository/products';
 
 class Handler {
-    async getProductsPrices(event) {
-        return Repository.list().then((products) => {
-            return products;    
-        })
-        .catch((error) => {throw new Error(error)})
+    async getProductsPrices(callback) {
+        let result = [];
+        let result = await Repository.list();
     }
 }
 

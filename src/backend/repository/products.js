@@ -38,11 +38,18 @@ class Products {
         return this._docClient.get(params).promise();
     }
 
-    list() {
+    async list() {
+        let result = [];
         var params = {
             TableName : TABLE_NAME,
         };
-        return this._docClient.scan(params).promise();
+        await this._docClient.scan(params).promise()
+        .then((data) => {
+            result = data;
+        })
+        .catch((error) => {throw new Error(error);});
+
+        return result;
     }
 
     delete(id) {
