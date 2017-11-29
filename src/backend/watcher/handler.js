@@ -2,7 +2,7 @@
 import Repository from '../repository/products';
 
 class Handler {
-    async on(event) {
+    async getProductsPrices(event) {
         return Repository.list().then((products) => {
             return products;    
         })
@@ -10,4 +10,4 @@ class Handler {
     }
 }
 
-module.export = new Handler();
+module.exports = new Handler();

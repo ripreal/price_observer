@@ -29,6 +29,4 @@ class Amazon {
     }
 }
 
-am = new Amazon();
-
 module.exports = new Amazon();

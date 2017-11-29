@@ -83,7 +83,7 @@ class ProductsPage extends Component {
     render() {
         return (
             <div class="products"> <ProductList products = {this.state.products}/>
-                <button onClick={this.dispatch.bind(this)} Style="float:right" id="test">test</button>
+                <button onClick={this.dispatch.bind(this)} Style="float:right" id="test">load products</button>
             </div>
             
         );

@@ -1,4 +1,3 @@
-import { throws } from "assert";
 
 const AWS_REGION = 'us-east';
 const TABLE_NAME = 'products';
@@ -15,9 +14,6 @@ class Products {
         this._AWS.config.update({
             region: AWS_REGION,
             endpoint: "http://localhost:8000",
-            credentials: new this._AWS.CognitoIdentityCredentials({
-                IdentityPoolId: 'us-east-foo-bar'
-              })
         });
         this._docClient = new this._AWS.DynamoDB.DocumentClient();
     }

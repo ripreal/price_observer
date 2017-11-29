@@ -32,16 +32,6 @@ class Categories extends Component {
     }
 
     render()  {
-        let categories = this.state.categories.map(function(category){
-          let url = "#/products?category=" + category.slug;
-          return (
-            <li key={category.slug}>
-              <a href={url}>
-                {category.name}
-              </a>
-            </li>
-          );
-        });
         let menuPage = null;
         switch (this.state.menu) {
             case "products":
@@ -63,7 +53,7 @@ class Categories extends Component {
                                 <span><i class="fa fa-folder-open-o" aria-hidden="true"></i>Categories</span>
                             </a>
                             <ul>
-                                {categories}
+                                {this.categories()}
                             </ul>
                         </li>
                         <li>
@@ -76,6 +66,23 @@ class Categories extends Component {
             </div>, 
             menuPage
         ];
+    }
+
+    onUpdateProductsClick() {
+
+    }
+
+    categories() {
+        return this.state.categories.map(function(category){
+            let url = "#/products?category=" + category.slug;
+            return (
+                <li key={category.slug}>
+                <a href={url}>
+                    {category.name}
+                </a>
+                </li>
+            );
+        });
     }
 
     toggleMenu(menuRef) {
