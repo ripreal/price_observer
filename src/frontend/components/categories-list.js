@@ -64,7 +64,6 @@ class Categories extends Component {
                     </ul>
                 </nav>
             </div>, 
-            menuPage
         ];
     }
 

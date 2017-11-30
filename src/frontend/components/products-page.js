@@ -1,6 +1,7 @@
 
 import React, {Component} from 'react';
 import ProductList from './product-list';
+
 const  AppStore = require ('../stores/app-store');
 
 class ProductsPage extends Component {
@@ -34,7 +35,6 @@ class ProductsPage extends Component {
             <div class="products"> <ProductList products = {this.state.products}/>
                 <button onClick={this.dispatch.bind(this)} Style="float:right" id="test">load products</button>
             </div>
-            
         );
     }
 }

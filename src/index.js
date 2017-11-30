@@ -1,9 +1,15 @@
 import React from 'react';
 import registerServiceWorker from './registerServiceWorker';
 import { hydrate } from "react-dom"
+import { Switch, Route, BrowserRouter } from 'react-router-dom'
+import Main from './frontend/components/main.js';
 
-import Categories from './frontend/components/categories-list';
 
-hydrate(<Categories/>, document.getElementById('categories'));
+hydrate(
+    <BrowserRouter>
+        <Switch>
+            <Route exact path='/' component={Main}/>
+        </Switch>
+    </BrowserRouter>, document.getElementById('categories'));
 
 registerServiceWorker();
