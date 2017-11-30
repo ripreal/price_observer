@@ -1,14 +1,16 @@
 
+const Api = require ('../api/api');
 const Dispatcher = require('../dispatcher/dispatcher');
 const ActionTypes = require('../actions/action-types');
 
 class ProductActions {
 
-    updateProducts(products) {
+    updateProducts() {
+
         Dispatcher.dispatch({
             actionType: ActionTypes.PRODUCTS_LOADED,
             data: {
-                products: products
+                products: Api.updateProducts()
             }
         });
     }

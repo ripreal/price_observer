@@ -1,4 +1,5 @@
 
+const ProductActions = require ('../actions/product-actions');
 const EventEmitter = require('events').EventEmitter
 const Dispatcher = require('../dispatcher/dispatcher');
 const ActionTypes = require('../actions/action-types');
@@ -14,7 +15,7 @@ class AppStore extends EventEmitter {
                     this.emitChange();
                     break;
                 case ActionTypes.PRODUCTS_LOADED:
-                    this.emitChange(action.data.products);
+                    this.emitChange(action.actionType, action.data.products);
                     break;
                 default:
             }
@@ -22,13 +23,17 @@ class AppStore extends EventEmitter {
     }
      
     addChangeListener(callback) {
-        this.on(this.CHANGE_EVENT, callback);
+        this.on(ActionTypes.PRODUCTS_LOADED, callback);
     }
 
-    emitChange(products) {
-        alert("ok");
-        this.emit(this.CHANGE_EVENT, products);
+    emitChange(action, products) {
+        this.emit(action, action, products);
     }
+
+    updateProducts() {
+        ProductActions.updateProducts();
+    }
+
 }
 
 module.exports = new AppStore();
