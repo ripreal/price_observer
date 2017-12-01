@@ -1,4 +1,3 @@
-
 const ProductActions = require('../actions/product-actions.js');
 const Handler = require('../actions/product-actions.js');
 

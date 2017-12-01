@@ -32,25 +32,18 @@ class Categories extends Component {
     }
 
     render()  {
-        let menuPage = null;
-        switch (this.state.menu) {
-            case "products":
-                menuPage = <Products key="products"/>;
-                break;
-            default:
-        }
-        return [
+        return (
             <div id="wrapper">
                 <nav id="main-nav" key="categories"> 
                     <ul>
                         <li>
                             <a href='#/products'>
-                                <span><i class="fa fa-puzzle-piece" aria-hidden="true"></i>Products</span>
+                                <span><i className="fa fa-puzzle-piece" aria-hidden="true"></i>Products</span>
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <span><i class="fa fa-folder-open-o" aria-hidden="true"></i>Categories</span>
+                                <span><i className="fa fa-folder-open-o" aria-hidden="true"></i>Categories</span>
                             </a>
                             <ul>
                                 {this.categories()}
@@ -58,13 +51,13 @@ class Categories extends Component {
                         </li>
                         <li>
                             <a href="#/about">
-                                <span><i class="fa fa-address-card-o" aria-hidden="true"></i>About</span>
+                                <span><i className="fa fa-address-card-o" aria-hidden="true"></i>About</span>
                             </a>
                         </li>
                     </ul>
                 </nav>
-            </div>, 
-        ];
+            </div>
+        );
     }
 
     onUpdateProductsClick() {
@@ -87,7 +80,7 @@ class Categories extends Component {
     toggleMenu(menuRef) {
         if (menuRef) {
             let [menuName] = /\w+/.exec(menuRef);
-            this.setState({menu: menuName});
+            this.props.onMenuChange.call(this, menuName);
         }
     }
 

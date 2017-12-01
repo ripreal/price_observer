@@ -3,6 +3,8 @@
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
 @import "rotating-card";
 @import "stores.scss";
+@import 'globals';
+//@include react-md-everything;
 
 body, html { overflow-x:hidden; }
 

@@ -18,7 +18,7 @@ class ProductList extends Component {
             productComponents = <div />;
         }
         return (
-            <div className="container">
+            <div className="products container">
                 <div className="row">
                     {productComponents}
                 </div>

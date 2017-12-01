@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react';
 import ProductList from './product-list';
 
@@ -31,10 +30,10 @@ class ProductsPage extends Component {
     }
 
     render() {
-        return (
-            <div class="products"> <ProductList products = {this.state.products}/>
-                <button onClick={this.dispatch.bind(this)} Style="float:right" id="test">load products</button>
-            </div>
+        return ([
+                <ProductList key="Products" products = {this.state.products}/>,
+                <button key="ProductActions" onClick={this.dispatch.bind(this)}>load products</button>
+            ]
         );
     }
 }
