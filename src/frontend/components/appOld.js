@@ -1,13 +1,15 @@
+// https://react-md.mlaursen.com/components/badges
+/* eslint-disable react/no-array-index-key */
 import React, { PureComponent } from 'react';
+import { Button, DialogContainer, NavigationDrawer, SVGIcon } from 'react-md';
 
-import TopNav from './topNav';
-import FloatToolBar from './floatToolBar';
-import PageContent from './pageContent';
-import Article from './article';
+import '../css/app.css';
+import WebFontLoader from 'webfontloader';
+import FaDatabase from 'react-icons/lib/fa/database';
 import inboxListItems from '../constants/inboxListItems';
-import TopBar from './topBar';
+import MyToolbar from './toolbar.js';
 
-  export default class App extends PureComponent {
+export default class App extends PureComponent {
     constructor() {
         super();
 
@@ -90,20 +92,6 @@ import TopBar from './topBar';
                
             </div>
             */
-
-            /*
-            <div>
-                <TopNav/>
-                <div className='u-topCenter'>
-                    <FloatToolBar/>
-                    <Article>
-                        <PageContent/>
-                    </Article>
-                </div>
-                <p> text text text</p>
-            </div>
-            */
-            <TopBar/>
         );
     }
 }

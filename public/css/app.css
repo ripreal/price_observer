@@ -266,28 +266,6 @@ hr {
   border: 0;
   border-top: solid 1px #ddd; }
 
-.page-header {
-  position: relative;
-  text-align: center;
-  margin: 0;
-  border-bottom: none; }
-  .page-header h1 {
-    font-family: 'Arvo';
-    font-weight: 700;
-    color: #53C5D0;
-    text-shadow: 0.05em 0.075em 0 rgba(0, 0, 0, 0.1); }
-    .page-header h1 a {
-      border: 0;
-      text-decoration: none; }
-  .page-header h2 {
-    font-family: 'Arvo';
-    font-weight: 100;
-    font-size: 20px; }
-  .page-header p {
-    text-transform: uppercase;
-    font-weight: 400;
-    color: #888; }
-
 i {
   margin-right: 5px; }
 

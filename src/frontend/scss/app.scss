@@ -1,6 +1,76 @@
 @import 'globals';
 @include react-md-everything;
 
-body {
-    margin: 0px;
+.u-topCenter {
+    position: relative !important;
+    outline: 1px dotted gray !important;
+    display:flex !important;
+    justify-content:center !important;
+}
+
+.u-fixedTop {
+    position: fixed !important;
+    z-index: 999;
+    top: 0px;
+    width: 100%;
+}
+
+.u-verticalCenter {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+}
+.u-textAlignCenter {
+    /*text-align: center !important;*/
+    display: inline-block;
+    padding-top: 19px;
+    color: #03a87c
+}
+
+.u-pageHeader {
+    position: relative;
+    text-align: center;
+    margin: 12px;
+    border-bottom: none; }
+    .page-header h1 {
+      font-family: 'Arvo';
+      font-weight: 400;
+      color: gray;
+      .page-header h1 a {
+        border: 0;
+        text-decoration: none; }
+    .page-header h2 {
+      font-family: 'Arvo';
+      font-weight: 100;
+      font-size: 18px; }
+    .page-header p {
+      font-weight: 400;
+      color: #888; }
+}
+
+.u-button {
+    margin: 0px 0px !important;
+    line-height: 30px !important;
+}
+
+.u-framedButton {
+    @extend .u-button;
+    border-radius: 3px !important; 
+    border: 1px solid !important;
+} 
+
+.u-roundButton {
+    @extend .u-button;
+    min-width: 50px !important;
+    border:  1px solid lightgrey  !important;
+    border-radius: 40px !important;
+    height: 50px !important;
+    background-color: white !important;
+    width: 50px !important;
+    margin: 3px !important;
+} 
+.u-roundButton:hover {
+    color: black !important;
+    border:  1px solid #03a87c !important;
+    background-color: white !important;
 }

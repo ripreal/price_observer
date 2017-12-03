@@ -3622,5 +3622,68 @@ svg.md-icon {
   .md-background--secondary-hover:hover {
     background: rgba(213, 0, 249, 0.9); } }
 
-body {
-  margin: 0px; }
+.u-topCenter {
+  position: relative !important;
+  outline: 1px dotted gray !important;
+  display: flex !important;
+  justify-content: center !important; }
+
+.u-fixedTop {
+  position: fixed !important;
+  z-index: 999;
+  top: 0px;
+  width: 100%; }
+
+.u-verticalCenter {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important; }
+
+.u-textAlignCenter {
+  /*text-align: center !important;*/
+  display: inline-block;
+  padding-top: 19px;
+  color: #03a87c; }
+
+.u-pageHeader {
+  position: relative;
+  text-align: center;
+  margin: 12px;
+  border-bottom: none; }
+
+.page-header h1 {
+  font-family: 'Arvo';
+  font-weight: 400;
+  color: gray; }
+  .page-header h1 .page-header h1 a {
+    border: 0;
+    text-decoration: none; }
+  .page-header h1 .page-header h2 {
+    font-family: 'Arvo';
+    font-weight: 100;
+    font-size: 18px; }
+  .page-header h1 .page-header p {
+    font-weight: 400;
+    color: #888; }
+
+.u-button, .u-framedButton, .u-roundButton {
+  margin: 0px 0px !important;
+  line-height: 30px !important; }
+
+.u-framedButton {
+  border-radius: 3px !important;
+  border: 1px solid !important; }
+
+.u-roundButton {
+  min-width: 50px !important;
+  border: 1px solid lightgrey  !important;
+  border-radius: 40px !important;
+  height: 50px !important;
+  background-color: white !important;
+  width: 50px !important;
+  margin: 3px !important; }
+
+.u-roundButton:hover {
+  color: black !important;
+  border: 1px solid #03a87c !important;
+  background-color: white !important; }
