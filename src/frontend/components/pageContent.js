@@ -14,7 +14,7 @@ const style = {
 export default class PageContent extends Component {
     render() {
         return (
-            <Paper style={style} zDepth={0}>
+            <div style={style} zDepth={0}>
                 ter t eter ter ter ter t ertert er ter ter te rte rt erwtert er tew terwterw ter ter  w rwe rwe rwe rwe rwe rwe rwe rw r wr we rwe rw rw rwe qrwq rwq rw rw r wr wq r
                 ter t eter ter ter ter t ertert er ter ter te rte rt erwtert er tew terwterw ter ter  w rwe rwe rwe rwe rwe rwe rwe rw r wr we rwe rw rw rwe qrwq rwq rw rw r wr wq r
                 ter t eter ter ter ter t ertert er ter ter te rte rt erwtert er tew terwterw ter ter  w rwe rwe rwe rwe rwe rwe rwe rw r wr we rwe rw rw rwe qrwq rwq rw rw r wr wq r
@@ -32,7 +32,7 @@ export default class PageContent extends Component {
                 ter t eter ter ter ter t ertert er ter ter te rte rt erwtert er tew terwterw ter ter  w rwe rwe rwe rwe rwe rwe rwe rw r wr we rwe rw rw rwe qrwq rwq rw rw r wr wq r
                 ter t eter ter ter ter t ertert er ter ter te rte rt erwtert er tew terwterw ter ter  w rwe rwe rwe rwe rwe rwe rwe rw r wr we rwe rw rw rwe qrwq rwq rw rw r wr wq r
                 v
-            </Paper>
+            </div>
         )
     }
 }

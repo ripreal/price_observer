@@ -1,6 +1,10 @@
 @import 'globals';
 @include react-md-everything;
 
+body {
+    margin: 0 !important;
+}
+
 .u-topCenter {
     position: relative !important;
     outline: 1px dotted gray !important;

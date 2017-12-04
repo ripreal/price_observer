@@ -5,9 +5,8 @@ import { Button, DialogContainer, NavigationDrawer, SVGIcon } from 'react-md';
 
 import '../css/app.css';
 import WebFontLoader from 'webfontloader';
-import FaDatabase from 'react-icons/lib/fa/database';
+import LoggedUser from './loggedUser.js'
 import inboxListItems from '../constants/inboxListItems';
-import MyToolbar from './toolbar.js';
 
 export default class App extends PureComponent {
     constructor() {
@@ -61,9 +60,8 @@ export default class App extends PureComponent {
     render() {
         const { visible, page, renderNode, primaryText } = this.state;
         return (
-            /*
+            
             <div>
-                
                 <Button raised onClick={this.show}>Open the Demo</Button>
                 <DialogContainer
                     id="navigation-drawer-demo"
@@ -81,7 +79,7 @@ export default class App extends PureComponent {
                         tabletDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT_MINI}
                         desktopDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT_MINI}
                         toolbarTitle= {primaryText}
-                        toolbarActions={[<Button icon onClick={this.hide}><FaDatabase/></Button>,  <Button icon onClick={this.hide}>close</Button>]}
+                        toolbarActions={[<LoggedUser/>]}
                         contentId="main-demo-content"
                         contentClassName="md-grid">
                         <h2 className="md-cell md-cell--12">{page}</h2>
@@ -89,9 +87,8 @@ export default class App extends PureComponent {
                         </section>
                     </NavigationDrawer>
                 </DialogContainer>
-               
             </div>
-            */
+            
         );
     }
 }

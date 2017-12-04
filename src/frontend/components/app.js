@@ -6,6 +6,7 @@ import PageContent from './pageContent';
 import Article from './article';
 import inboxListItems from '../constants/inboxListItems';
 import TopBar from './topBar';
+import LeftMenu from './leftMenu';
 
   export default class App extends PureComponent {
     constructor() {
@@ -91,9 +92,10 @@ import TopBar from './topBar';
             </div>
             */
 
-            /*
+            
             <div>
                 <TopNav/>
+                <LeftMenu/>
                 <div className='u-topCenter'>
                     <FloatToolBar/>
                     <Article>
@@ -102,8 +104,8 @@ import TopBar from './topBar';
                 </div>
                 <p> text text text</p>
             </div>
-            */
-            <TopBar/>
+            
+            //<TopBar/>
         );
     }
 }

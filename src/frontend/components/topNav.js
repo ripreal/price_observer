@@ -1,50 +1,64 @@
 import React, { Component } from 'react';
-import IconMenu from 'material-ui/IconMenu';
+import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
-import FontIcon from 'material-ui/FontIcon';
-import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
+import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
-import DropDownMenu from 'material-ui/DropDownMenu';
 import FlatButton from 'material-ui/FlatButton';
-import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
+import Toggle from 'material-ui/Toggle';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
 
-import '../css/app.css';
-
-export default class ToolbarExamplesSimple extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            value: 3,
-        };
-    }
-
-    handleChange = (event, index, value) => this.setState({ value });
+class Login extends Component {
+    static muiName = 'FlatButton';
 
     render() {
         return (
-            <div style={{marginBottom:'68px'}}>
-                <Toolbar className='u-topCenter u-fixedTop'>
-                    <ToolbarGroup firstChild={true}>
-                        <DropDownMenu value={this.state.value} onChange={this.handleChange}>
-                            <MenuItem value={1} primaryText="All Broadcasts" />
-                            <MenuItem value={2} primaryText="All Voice" />
-                            <MenuItem value={3} primaryText="All Text" />
-                            <MenuItem value={4} primaryText="Complete Voice" />
-                            <MenuItem value={5} primaryText="Complete Text" />
-                            <MenuItem value={6} primaryText="Active Voice" />
-                            <MenuItem value={7} primaryText="Active Text" />
-                        </DropDownMenu>
-                    </ToolbarGroup>
-                    <div className="page-header u-verticalCenter">
-                        <h1><a href="#/products">R.I.P.real blog</a></h1>
-                    </div>
-                    <ToolbarGroup style="">
-                        <FlatButton className="u-button" label="Products" primary={true} />
-                        <FlatButton className="u-framedButton" label="About" primary={true} />
-                    </ToolbarGroup>
-                </Toolbar>
+            <FlatButton {...this.props} label="Login" />
+        );
+    }
+}
+
+const Logged = (props) => (
+    <IconMenu
+        {...props}
+        iconButtonElement={
+            <IconButton><MoreVertIcon /></IconButton>
+        }
+        targetOrigin={{ horizontal: 'right', vertical: 'top' }}
+        anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
+    >
+        <MenuItem primaryText="Refresh" />
+        <MenuItem primaryText="Help" />
+        <MenuItem primaryText="Sign out" />
+    </IconMenu>
+);
+
+Logged.muiName = 'IconMenu';
+
+/**
+ * This example is taking advantage of the composability of the `AppBar`
+ * to render different components depending on the application state.
+ */
+class AppBarExampleComposition extends Component {
+    state = {
+        logged: true,
+    };
+
+    handleChange = (event, logged) => {
+        this.setState({ logged: logged });
+    };
+
+    render() {
+        return (
+            <div>
+                <AppBar className="u-fixedTop"
+                    title="Title"
+                    //iconElementLeft={<IconButton><NavigationClose /></IconButton>}
+                    iconElementRight={this.state.logged ? <Logged /> : <Login />}
+                />
             </div>
         );
     }
 }
+
+export default AppBarExampleComposition;

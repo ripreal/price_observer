@@ -5,10 +5,11 @@ import {u_darkGreen} from'./uColors';
 // This replaces the textColor value on the palette
 // and then update the keys for each component that depends on it.
 // More on Colors: http://www.material-ui.com/#/customization/colors
+
 export const muiTheme = getMuiTheme({
     palette: {
         //primary1Color: green400,
-        primary2Color: u_darkGreen,
+       // primary2Color: u_darkGreen,
         //primary3Color: green400,
         //accent1Color: pinkA200,
         //accent2Color: grey100,
@@ -20,18 +21,18 @@ export const muiTheme = getMuiTheme({
         //pickerHeaderColor: cyan500,
         //shadowColor: fullBlack,
     },
-    toolbar: {
-        height: 67,
-        backgroundColor: white,
+    appBar: {
+        height: 40,
+   //     backgroundColor: white,
     },
     flatButton: {
         //textColor: palette.textColor,
-        primaryTextColor: u_darkGreen,
+   //     primaryTextColor: u_darkGreen,
         //secondaryTextColor: palette.accent1Color,
       },
       tabs: {
-        backgroundColor: white,
-        textColor: u_darkGreen,
-        selectedTextColor: u_darkGreen,
+     //   backgroundColor: white,
+    //    textColor: u_darkGreen,
+    //    selectedTextColor: u_darkGreen,
       }
 });
