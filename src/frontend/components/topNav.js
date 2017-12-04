@@ -6,7 +6,12 @@ import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import Toggle from 'material-ui/Toggle';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import MenuIcon from 'material-ui/svg-icons/navigation/menu';
+import { Button, SVGIcon } from 'react-md';
+import { Toolbar } from 'react-md';
+
+import '../css/app.css';
+
 
 class Login extends Component {
     static muiName = 'FlatButton';
@@ -41,21 +46,23 @@ Logged.muiName = 'IconMenu';
  */
 class AppBarExampleComposition extends Component {
     state = {
-        logged: true,
+        logged: false,
     };
 
-    handleChange = (event, logged) => {
+    handleChange (event, logged) {
         this.setState({ logged: logged });
     };
 
     render() {
         return (
             <div>
-                <AppBar className="u-fixedTop"
-                    title="Title"
-                    //iconElementLeft={<IconButton><NavigationClose /></IconButton>}
-                    iconElementRight={this.state.logged ? <Logged /> : <Login />}
-                />
+             <Toolbar
+            colored
+            fixed={true}
+            nav={<Button icon primary>menu</Button>}
+            title="Colored"
+            actions={<Button icon primary>favorite</Button>}
+            />
             </div>
         );
     }

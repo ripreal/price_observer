@@ -79,7 +79,7 @@ export default class App extends PureComponent {
                         tabletDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT_MINI}
                         desktopDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT_MINI}
                         toolbarTitle= {primaryText}
-                        toolbarActions={[<LoggedUser/>]}
+                        toolbarActions={ <Button icon onClick={this.hide}>close</Button>}
                         contentId="main-demo-content"
                         contentClassName="md-grid">
                         <h2 className="md-cell md-cell--12">{page}</h2>

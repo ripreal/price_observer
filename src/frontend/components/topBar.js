@@ -1,17 +1,21 @@
-/* Simple.jsx */
-import React, { Component }from 'react';
-import { Toolbar } from 'react-md';
-import FlatButton from 'material-ui/FlatButton';
+/* TitleMenuRaw.jsx */
+import React from 'react';
+import PropTypes from 'prop-types';
+import { SelectField } from 'react-md';
 
-export default class TopBar extends Component {
-    render() {
-        return (
-            <div className="toolbars__examples">
-                <Toolbar
-                title="Transparent"
-                actions = {[<FlatButton className="u-button" label="Products" primary={true} />]}
-                />
-            </div>
-        )
-    }
-}
+const TopBar = props => <SelectField {...props} />;
+
+TopBar.propTypes = {
+  id: PropTypes.string.isRequired,
+
+  // Injected by the Toolbar component
+  className: PropTypes.string,
+  toolbar: PropTypes.bool,
+  position: PropTypes.string,
+};
+
+TopBar.defaultProps = {
+  defaultValue: 'All',
+  menuItems: ['All', 'Family', 'Friends', 'Coworkers'],
+};
+export default TopBar;
