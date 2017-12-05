@@ -12,6 +12,11 @@ import { Toolbar } from 'react-md';
 
 import '../css/app.css';
 
+const style = {
+    boxShadow: 'initial',
+    marginBottom: '60px'
+}
+
 
 class Login extends Component {
     static muiName = 'FlatButton';
@@ -56,12 +61,11 @@ class AppBarExampleComposition extends Component {
     render() {
         return (
             <div>
-             <Toolbar
-            colored
+             <Toolbar style={style}
             fixed={true}
-            nav={<Button icon primary>menu</Button>}
+            nav={[]}
             title="Colored"
-            actions={<Button icon primary>favorite</Button>}
+            actions={[ <Button flat primary swapTheming>Hello</Button>, <Button icon primary>favorite</Button>]}
             />
             </div>
         );

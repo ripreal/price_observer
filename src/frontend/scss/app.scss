@@ -5,6 +5,10 @@ body {
     margin: 0 !important;
 }
 
+div {
+  //  outline: 1px solid gray;
+}
+
 .u-topCenter {
     position: relative !important;
     outline: 1px dotted gray !important;
@@ -17,8 +21,31 @@ body {
     z-index: 999;
     top: 0px;
     width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    top: 2rem;
+    align-items: center;
+    background-color: blue;
 }
 
+u.leftIndent {
+    margin-left: 30px;
+}
+
+.u-leftBarGroup {
+    display: flex;
+    align-items: center;
+}
+
+.u-rightIndent {
+    margin-right: 30px !important;
+}
+
+.u-rightBarGroup {
+   display: flex;
+   align-items: center;
+}
 .u-verticalCenter {
     display: flex !important;
     flex-direction: column !important;

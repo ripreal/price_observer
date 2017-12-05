@@ -4,9 +4,10 @@ import TopNav from './topNav';
 import FloatToolBar from './floatToolBar';
 import PageContent from './pageContent';
 import Article from './article';
-import inboxListItems from '../constants/inboxListItems';
 import TopBar from './topBar';
-import LeftMenu from './leftMenu';
+import UserLogo from './userLogo';
+import MyTabs from './myTabs';
+import inboxListItems from '../constants/inboxListItems';
 
   export default class App extends PureComponent {
     constructor() {
@@ -92,20 +93,14 @@ import LeftMenu from './leftMenu';
             </div>
             */
 
-            
-            <div>
-                <TopNav/>
-                <LeftMenu/>
-                <div className='u-topCenter'>
-                    <FloatToolBar/>
-                    <Article>
-                        <PageContent/>
-                    </Article>
-                </div>
+                <div>
+                <TopBar 
+                height={'50px'}
+                leftItems={<UserLogo/>}
+                />
                 <p> text text text</p>
+                <MyTabs/>
             </div>
-            
-            //<TopBar/>
         );
     }
 }

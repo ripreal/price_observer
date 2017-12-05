@@ -5,7 +5,6 @@ import { Button, DialogContainer, NavigationDrawer, SVGIcon } from 'react-md';
 
 import '../css/app.css';
 import WebFontLoader from 'webfontloader';
-import LoggedUser from './loggedUser.js'
 import inboxListItems from '../constants/inboxListItems';
 
 export default class App extends PureComponent {
