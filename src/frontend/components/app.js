@@ -5,9 +5,15 @@ import FloatToolBar from './floatToolBar';
 import PageContent from './pageContent';
 import Article from './article';
 import TopBar from './topBar';
-import UserLogo from './userLogo';
-import MyTabs from './myTabs';
 import inboxListItems from '../constants/inboxListItems';
+import WebFontLoader from 'webfontloader';
+import '../css/app.css';
+
+WebFontLoader.load({
+    google: {
+      families: ['Roboto', 'Roboto']
+    }
+  });
 
   export default class App extends PureComponent {
     constructor() {
@@ -96,10 +102,8 @@ import inboxListItems from '../constants/inboxListItems';
                 <div>
                 <TopBar 
                 height={'50px'}
-                leftItems={<UserLogo/>}
                 />
                 <p> text text text</p>
-                <MyTabs/>
             </div>
         );
     }

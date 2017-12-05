@@ -175,63 +175,6 @@
   font: 16px/1 Arial sans-serif;
   /* <-- reset the font property */ }
 
-body, html {
-  overflow-x: hidden; }
-
-body {
-  background-color: #fff;
-  font-family: 'Source Sans Pro';
-  font-size: 12px;
-  font-weight: 300;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  /* Fix for webkit rendering */
-  -webkit-text-size-adjust: 100%; }
-
-h1, h2, h3, h4, h5, h6, span, p {
-  font-family: 'Source Sans Pro'; }
-
-body,
-input,
-textarea,
-select {
-  font-family: 'Source Sans Pro';
-  font-weight: 300;
-  color: #777; }
-
-h1 {
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #888; }
-
-h2,
-h3,
-h4 {
-  font-weight: 400;
-  color: #888; }
-
-h5 {
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #53C5D0;
-  text-align: center; }
-
-h6 {
-  font-weight: 400;
-  font-size: 1.5em;
-  text-transform: uppercase;
-  color: #545454;
-  text-align: left; }
-
-h1 a,
-h2 a,
-h3 a,
-h4 a,
-h5 a,
-h6 a {
-  color: inherit;
-  text-decoration: none;
-  border: 0; }
 
 a {
   color: #666;
@@ -290,7 +233,3 @@ i {
 .products {
   background-color: #E6E6E6;
   padding-top: 20px; }
-  
-body {
-    margin: 0 !important;
-}

@@ -212,9 +212,6 @@ caption, .md-caption {
   top: 0;
   width: 100%; }
 
-.md-tab--inactive {
-  color: red; }
-
 @media screen and (min-width: 320px) {
   .md-subheading-2,
   .md-subheading-1 {
@@ -2984,7 +2981,7 @@ svg.md-icon {
     height: 72px;
     padding-bottom: 16px; }
   .md-tab--inactive {
-    color: rgba(255, 255, 255, 0.7); }
+    color: #009688; }
 
 .md-tab-indicator {
   background: #ff4081;
@@ -3643,10 +3640,9 @@ body {
   align-content: center;
   justify-content: space-between;
   top: 2rem;
-  align-items: center;
-  background-color: blue; }
+  align-items: center; }
 
-u.leftIndent {
+.u-leftIndent {
   margin-left: 30px; }
 
 .u-leftBarGroup {
