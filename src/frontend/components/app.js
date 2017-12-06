@@ -3,7 +3,6 @@ import React, { PureComponent } from 'react';
 import TopNav from './topNav';
 import FloatToolBar from './floatToolBar';
 import PageContent from './pageContent';
-import Article from './article';
 import TopBar from './topBar';
 import inboxListItems from '../constants/inboxListItems';
 import WebFontLoader from 'webfontloader';
@@ -14,6 +13,10 @@ WebFontLoader.load({
       families: ['Roboto', 'Roboto']
     }
   });
+
+  const style = {
+    top: 80,
+  }
 
   export default class App extends PureComponent {
     constructor() {
@@ -98,12 +101,9 @@ WebFontLoader.load({
                
             </div>
             */
-
-                <div>
-                <TopBar 
-                height={'50px'}
-                />
-                <p> text text text</p>
+            <div style={style}>
+                <TopBar height={style.top - 30}/>
+                <PageContent />
             </div>
         );
     }

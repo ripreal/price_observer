@@ -9,12 +9,10 @@ import { muiTheme } from './frontend/constants/theme';
 
 hydrate(
     <BrowserRouter>
-        <Switch>
-            <MuiThemeProvider muiTheme={muiTheme}>
-                <Route exact path='/' component={App}/>
-            </MuiThemeProvider>
-        </Switch>
+        <MuiThemeProvider muiTheme={muiTheme}>
+            <App/>
+        </MuiThemeProvider>
     </BrowserRouter>
-    , document.getElementById('categories'));
+    , document.getElementById('app'));
     
 registerServiceWorker();

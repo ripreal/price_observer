@@ -1,6 +1,10 @@
 @import 'globals';
 @include react-md-everything;
 
+html{
+    background-color: white;
+}
+
 body {
     margin: 0 !important;
 }
@@ -9,14 +13,14 @@ div {
   //  outline: 1px solid gray;
 }
 
-.u-topCenter {
+.u-centerContent {
     position: relative !important;
     outline: 1px dotted gray !important;
     display:flex !important;
     justify-content:center !important;
 }
 
-.u-fixedTop {
+.u-fixedTopParent {
     position: fixed !important;
     z-index: 999;
     top: 0px;
@@ -24,8 +28,21 @@ div {
     display: flex;
     align-content: center;
     justify-content: space-between;
-    top: 2rem;
+    align-items: end;
+    background-color: white;
+    opacity: 0.94;
+}
+
+.u-fixedTop {
+    position: fixed !important;
+    z-index: 999;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
     align-items: center;
+    background-color: white;
+    opacity: 0.94;
 }
 
 .u-leftIndent {
@@ -45,7 +62,7 @@ div {
    display: flex;
    align-items: center;
 }
-.u-verticalCenter {
+.u-verticalCenter-verticalCenter {
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;

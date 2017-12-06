@@ -2974,6 +2974,8 @@ svg.md-icon {
   text-align: center;
   text-decoration: none;
   text-transform: uppercase; }
+  .md-tab .md-tab-label {
+    font-size: 16px !important; }
   .md-tab--multiline {
     font-size: 12px;
     padding-bottom: 12px; }
@@ -3622,16 +3624,19 @@ svg.md-icon {
   .md-background--secondary-hover:hover {
     background: rgba(255, 64, 129, 0.9); } }
 
+html {
+  background-color: white; }
+
 body {
   margin: 0 !important; }
 
-.u-topCenter {
+.u-centerContent {
   position: relative !important;
   outline: 1px dotted gray !important;
   display: flex !important;
   justify-content: center !important; }
 
-.u-fixedTop {
+.u-fixedTopParent {
   position: fixed !important;
   z-index: 999;
   top: 0px;
@@ -3639,8 +3644,20 @@ body {
   display: flex;
   align-content: center;
   justify-content: space-between;
-  top: 2rem;
-  align-items: center; }
+  align-items: end;
+  background-color: white;
+  opacity: 0.94; }
+
+.u-fixedTop {
+  position: fixed !important;
+  z-index: 999;
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  opacity: 0.94; }
 
 .u-leftIndent {
   margin-left: 30px; }
@@ -3656,7 +3673,7 @@ body {
   display: flex;
   align-items: center; }
 
-.u-verticalCenter {
+.u-verticalCenter-verticalCenter {
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important; }
