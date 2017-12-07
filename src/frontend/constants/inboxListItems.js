@@ -1,18 +1,16 @@
 import React from 'react';
 import { FontIcon } from 'react-md';
-import Products from '../components/products-page'
-import Categories from '../components/categories-list'
 
 export default [{
     key: 'products',
     primaryText: 'Products',
-    componentPage: <Products/>,
+    componentPage: '<Products/>',
     leftIcon: <FontIcon>inbox</FontIcon>,
     active: true,
 }, {
     key: 'starred',
     primaryText: 'Starred',
-    componentPage: <Categories/>,
+    componentPage: '<Categories/>',
     leftIcon: <FontIcon>star</FontIcon>,
 }, {
     key: 'send-mail',

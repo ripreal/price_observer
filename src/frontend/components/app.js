@@ -8,6 +8,8 @@ import inboxListItems from '../constants/inboxListItems';
 import WebFontLoader from 'webfontloader';
 import '../css/app.css';
 
+import { TextField, Avatar, Button, IconSeparator, FontIcon, SVGIcon } from 'react-md';
+
 WebFontLoader.load({
     google: {
       families: ['Roboto', 'Roboto']
@@ -105,6 +107,7 @@ WebFontLoader.load({
                 <TopBar height={style.top - 30}/>
                 <PageContent />
             </div>
+     
         );
     }
 }

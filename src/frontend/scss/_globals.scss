@@ -3,7 +3,7 @@
 // Any variable overrides. The following just changes the default theme to use teal and purple.
 
 $md-primary-color: $md-teal-500;
-$md-secondary-color: $md-pink-a-200 !default;
+$md-secondary-color: $md-red-500 !default;
 $font-weight: 800;
 $md-font-name: Noto !default;
 
@@ -109,6 +109,42 @@ $md-font-name: Noto !default;
     }
   }
 
+  // BUTTONS
+
+  @mixin react-md-text-fields($primary-color: $md-primary-color, $light-theme: $md-light-theme, $error-color: $md-red-500, $include-media: $md-media-included, $include-multiline: $md-text-field-include-multiline, $include-floating-label: $md-text-field-include-floating-label, $include-block: $md-text-field-include-block, $include-icon: $md-text-field-include-icon, $include-message: $md-text-field-include-message, $include-password: $md-text-field-include-password, $include-inline-indicator: $md-text-field-include-inline-indicator, $include-dense-icons: $md-font-icon-include-dense, $custom-sizes: $md-text-field-custom-sizes) {
+    @include react-md-text-field-container($light-theme, $include-multiline, $include-block, $include-message);
+    @include react-md-text-field($light-theme, $include-multiline);
+    @include react-md-text-field-divider($primary-color, $error-color);
   
+    @if $include-floating-label {
+      @include react-md-text-field-floating-label($primary-color, $light-theme, $error-color);
+    }
+  
+    @if $include-message {
+      @include react-md-text-field-message($light-theme, $error-color, $include-icon);
+    }
+  
+    @if $include-password or $include-icon {
+      @include react-md-text-field-icon($primary-color, $light-theme, $error-color);
+    }
+  
+    @if $include-password or $include-inline-indicator {
+      @include react-md-text-field-inline-indicator;
+    }
+  
+    @if $include-password {
+      @include react-md-text-field-password($light-theme);
+    }
+  
+    @if $include-media {
+      @include react-md-text-fields-media($include-floating-label, $include-block, $include-icon, $include-message, $include-password, $include-dense-icons, $custom-sizes);
+    }
+
+    .md-cell {
+      width: 100%,
+    }
+    
+    @include react-md-text-field-custom-sizes($md-text-field-custom-sizes, $include-floating-label);
+  }
   
   

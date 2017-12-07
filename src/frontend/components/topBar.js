@@ -4,6 +4,8 @@ import '../css/app.css';
 
 import RightTopGroup from './rightTopGroup';
 import LeftTopGroup from './leftTopGroup';
+import { Toolbar } from 'react-md';
+import { Button, SVGIcon } from 'react-md';
 
 export default class TopBar extends Component {
 
@@ -26,6 +28,7 @@ export default class TopBar extends Component {
                 </div>
             </div>
         );
+       
     }
 
 }

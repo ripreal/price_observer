@@ -3360,6 +3360,9 @@ svg.md-icon {
   .md-floating-label--inactive-title {
     transform: translate3d(0, 36px, 0); } }
 
+.md-cell {
+  width: 100%; }
+
 .md-text-field--title {
   font-size: 34px; }
 
