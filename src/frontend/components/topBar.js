@@ -26,6 +26,8 @@ export default class TopBar extends Component {
                     <LeftTopGroup/>
                     <RightTopGroup/>
                 </div>
+                <div id='root'>
+                </div>
             </div>
         );
        

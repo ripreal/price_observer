@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { TextField, Avatar, Button, IconSeparator, FontIcon, SVGIcon } from 'react-md';
 import '../../css/app.css';
-
-import Auth0LockPasswordless from 'auth0-lock-passwordless';
+import AuthAPI from '../../api/authAPI';
 
 const style = {
     cursor: 'pointer'
@@ -19,6 +18,18 @@ export default class UserLogo extends Component {
     constructor(props) {
         super(props);
         this.state = {loginState: LoginStates.NOT_LOGGED};
+        
+        AuthAPI.addListener(
+            (authResult) => {
+                // Use the token in authResult to getUserInfo() and save it to localStorage
+                lock.getUserInfo(authResult.accessToken, function(error, profile) {
+                  if (error) {
+                    // Handle errorthi
+                    return;
+                  }
+                }
+            }
+        );
     }
 
     render() {
@@ -51,6 +62,8 @@ export default class UserLogo extends Component {
     }
 
     renderLogin() {
+
+
         return (
             <Button 
           //  onClick={() => this.setState({loginState: LoginStates.ASK_AUTH})}
@@ -63,15 +76,7 @@ export default class UserLogo extends Component {
     }
 
     test() {
-        const clientID = "0VryOL7K5T0bAF9fVOBYIrnQI6Qxs2qc";
-        const domain = "ripreal.auth0.com";
-        let lock = new Auth0LockPasswordless(clientID, domain);
-        // invoke magiclink with options and callback
-        lock.magiclink({closable: false,  oidcConformant: true}, function(error, email) {
-            if (!error) {
-                alert("A magic link has been sent to " + email);
-            }
-        });
+        
     }
 
     renderAuth() {
