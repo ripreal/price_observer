@@ -1,11 +1,12 @@
-// https://react-md.mlaursen.com/components/badges
-/* eslint-disable react/no-array-index-key */
-import React, { PureComponent } from 'react';
-import { Button, DialogContainer, NavigationDrawer, SVGIcon } from 'react-md';
 
+import React, { PureComponent } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { Button, DialogContainer, NavigationDrawer, SVGIcon } from 'react-md';
 import '../css/app.css';
 import WebFontLoader from 'webfontloader';
 import inboxListItems from '../constants/inboxListItems';
+import LoginForm from './loginForm';
+import FloatToolBar from './floatToolBar';
 
 export default class App extends PureComponent {
     constructor() {
@@ -59,7 +60,6 @@ export default class App extends PureComponent {
     render() {
         const { visible, page, renderNode, primaryText } = this.state;
         return (
-            
             <div>
                 <Button raised onClick={this.show}>Open the Demo</Button>
                 <DialogContainer
@@ -78,16 +78,16 @@ export default class App extends PureComponent {
                         tabletDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT_MINI}
                         desktopDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT_MINI}
                         toolbarTitle= {primaryText}
-                        toolbarActions={ <Button icon onClick={this.hide}>close</Button>}
+                        toolbarActions={<Button href="/login" flat secondary swapTheming>Login</Button>}
                         contentId="main-demo-content"
                         contentClassName="md-grid">
-                        <h2 className="md-cell md-cell--12">{page}</h2>
-                        <section className="md-text-container md-cell md-cell--12">
-                        </section>
+                            <h2 className="md-cell md-cell--12">{page} </h2>
+                            <Switch/>
+                                <Route path='/login' render={(props) => <LoginForm visible={true}/>}/>
+                            <Switch/>
                     </NavigationDrawer>
                 </DialogContainer>
             </div>
-            
         );
     }
 }

@@ -19,17 +19,6 @@ export default class UserLogo extends Component {
         super(props);
         this.state = {loginState: LoginStates.NOT_LOGGED};
         
-        AuthAPI.addListener(
-            (authResult) => {
-                // Use the token in authResult to getUserInfo() and save it to localStorage
-                lock.getUserInfo(authResult.accessToken, function(error, profile) {
-                  if (error) {
-                    // Handle errorthi
-                    return;
-                  }
-                }
-            }
-        );
     }
 
     render() {

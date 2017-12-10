@@ -4,7 +4,7 @@ import Auth0LockPasswordless from 'auth0-lock-passwordless';
 const clientID = "0VryOL7K5T0bAF9fVOBYIrnQI6Qxs2qc";
 const domain = "ripreal.auth0.com";
 
-class authAPI {
+export default class authAPI {
     
     constructor() {
         this._lock = new Auth0LockPasswordless(clientID, domain);
@@ -52,5 +52,3 @@ class authAPI {
         });
     }
 }
-
-module.exports = authAPI;
