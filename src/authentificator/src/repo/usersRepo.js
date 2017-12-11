@@ -1,15 +1,24 @@
 
-const AWS = require("aws-sdk");
+var AWS = require("aws-sdk");
 const userSettings = require('../../../userSettings.json');
 const TABLE_NAME = 'users';
 
 class UsersRepo {
 
     constructor() {
+
+        AWS.config = new AWS.Config();
+        AWS.config.accessKeyId = userSettings.AWS.ACCESS_KEY_ID;
+        AWS.config.secretAccessKey = userSettings.AWS.SECRET_ACCESS_KEY;
+        AWS.config.region = userSettings.REGION;
+        AWS.config.endpoint = userSettings.DYNAMO_DB.SERVER;
+        /*
         AWS.config.update({
             region: userSettings.REGION,
             endpoint: userSettings.DYNAMO_DB.SERVER,
         });
+        */
+        this._dynamodb = new AWS.DynamoDB();
         this._docClient = new AWS.DynamoDB.DocumentClient();
     }
 
@@ -18,7 +27,7 @@ class UsersRepo {
             TableName: TABLE_NAME,
             Item: userData
         };
-        return await this._docClient.put(params);
+        return await this._docClient.put(params).promise();
     }
 
     get(email) {
@@ -42,22 +51,14 @@ class UsersRepo {
     }
 
     async deleteUsersTable() {
-        let dynamodb = new AWS.DynamoDB();
+       
         let params = {
             TableName : TABLE_NAME
         };
-        await dynamodb.deleteTable(params, function(err, data) {
-            if (err) {
-                console.error("***UNABLE TO DELETE TABLE***. Error JSON:", JSON.stringify(err, null, 2));
-            } else {
-                console.log("***DELETED TABLE***. Table description JSON:", JSON.stringify(data, null, 2));
-            }
-        });
+        return await this._dynamodb.deleteTable(params).promise();
     }
 
     async createSheme() {
-        
-        let dynamodb = new AWS.DynamoDB();
 
         let params = {
             TableName : TABLE_NAME,
@@ -73,13 +74,7 @@ class UsersRepo {
             }
         };
 
-        await dynamodb.createTable(params, function(err, data) {
-            if (err) {
-                console.error("***UNABLE TO CREATE TABLE***. Error JSON:", JSON.stringify(err, null, 2));
-            } else {
-                console.log("***CREATED TABLE***. Table description JSON:", JSON.stringify(data, null, 2));
-            }
-        });
+        return await this._dynamodb.createTable(params).promise();
     }
 }
 

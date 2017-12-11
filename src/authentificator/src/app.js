@@ -30,7 +30,11 @@ app.listen(3001, function () {
 
 async function test() {
     let repo = new UsersRepo();
-    await repo.put("");
+    try {
+        await repo.put("");
+    } catch(err) {
+        console.log(err);
+    }
     let t1= "";
 }
 test();

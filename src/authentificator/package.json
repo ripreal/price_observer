@@ -2,18 +2,20 @@
   "name": "authentificator",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "src/app.js",
   "author": "",
   "license": "ISC",
   "dependencies": {
     "all": "0.0.0",
+    "aws-sdk": "^2.167.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "jest": "^21.2.1",
+    "jest-cli": "^21.2.1",
     "nodemon": "^1.12.5"
   },
   "scripts": {
-    "start": "nodemon app",
+    "start": "nodemon src/app",
     "watch": "nodemon app && mongod",
     "test": "jest"
   }

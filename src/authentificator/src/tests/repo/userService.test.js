@@ -9,17 +9,18 @@ const asyncMiddleware = fn =>
 };
 
 it('testCRUD_User', async () => {
-
+    
     let repo = new UsersRepo();
     try {
         await repo.deleteUsersTable();
     } catch(error) {
-        console.log(error);
-        expect(error).toBeNull();
+        console.log(error.message);
     }
+    
     try {
         await repo.createSheme();
     } catch (error) {
+        console.log(error);
         expect(error).toBeNull();
     }
     
@@ -27,18 +28,14 @@ it('testCRUD_User', async () => {
 
     let userData = uService.emptyUser();
     userData.username = 'ripreal';
-    userData.email = 'mail@host.ru';
+   // userData.email = 'mail@host.ru';
     userData.password = '12345';
     userData.passwordconf   = '12345';
     
-    let error = null;
-    
-    asyncMiddleware(async (userData) => {
-
-       await uService.createUser(userData)
-       let t1 = "";
-    });
-
-
-    expect(error).toBeNull();
+    try {
+        await uService.createUser(userData);
+    } catch (error) {
+        console.log(error);
+        expect(error).toBeNull();
+    }
 });

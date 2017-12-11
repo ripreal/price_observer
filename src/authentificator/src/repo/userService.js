@@ -14,13 +14,12 @@ class UserService {
     }   
 
     async createUser(userData) {
-        this._usersRepo.put(userData).promise();
+        return this._usersRepo.put(userData);
     }
 
     emptyUser() {
         return {
             'username': '',
-            'email': '',
             'password':'',
             'passwordconf':''
         }
