@@ -1,5 +1,6 @@
 
 const UsersRepo = require('./usersRepo');
+const bcrypt = require('bcrypt');
 
 class UserService {
 
@@ -28,6 +29,22 @@ class UserService {
             throw new Error(error);
         }
         return user;
+    }
+
+    async authenticate(email, password, callback) {
+        let user = null;
+        try {
+            user = await this.findOne(email);
+            if (typeof user != 'object' ) {
+                throw new Error('User not found!');
+            }
+        } catch (error) {
+            throw new Error(error);
+        }
+
+        bcrypt.compare(password, user.password, function (err, result) {
+            callback(err, result);
+        });
     }
 
     emptyUser() {

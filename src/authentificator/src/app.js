@@ -23,35 +23,38 @@ app.use(function (err, req, res, next) {
     res.send(err.message);
 });
 
+testAsync();
+
 // listen on port 3001
 app.listen(3001, function () {
-    console.log('Express app listening on port 3000');
+    console.log('Express app listening on port 3001');
 });
 
-async function test() {
-    let uService = new UserService();
 
-    let repo = new UsersRepo();
-    try {
-        let data = await repo.list();
-    } catch(error) {
-        console.log(error);
-    }
+async function testAsync() {
+    let userService = new UserService();
 
-    let userData = uService.emptyUser();
+    let userData = userService.emptyUser();
     userData.username = 'ripreal';
     userData.email = 'mail@host.ru';
     userData.password = '12345';
     userData.passwordconf   = '12345';
+
+    // TEST PUT
+
     try {
-        await uService.createUser(userData);
-        let user = await uService.findOne(userData.email);
-        let t1 = "";
-
-    } catch(err) {
-        console.log(err);
+        await userService.createUser(userData);
+    } catch (error) {
+        console.log(error);
+        expect(error).toBeNull();
     }
-    let t2 = "";
+    try {
+        let list = await userService._usersRepo.list();
+        let t1 = "";
+    } catch (error) {
+        let t2 = "";
+    }
+    let res = await userService.authenticate('mail@host.ru', '12345', (err, result) => {
+        console.log(err);
+    });
 }
-//test();
-

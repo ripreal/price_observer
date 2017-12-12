@@ -1,5 +1,6 @@
 
-var AWS = require("aws-sdk");
+const AWS = require("aws-sdk");
+const bcrypt = require('bcrypt');
 const userSettings = require('../../../userSettings.json');
 const TABLE_NAME = 'users';
 
@@ -23,11 +24,13 @@ class UsersRepo {
     }
 
     async put(userData)  {
-        let params = {
-            TableName: TABLE_NAME,
-            Item: userData
-        };
+        let user = userData;
         try {
+            await this._preSave(user);
+            let params = {
+                TableName: TABLE_NAME,
+                Item: user
+            };
             await this._docClient.put(params).promise();
         } catch (error) {
             throw new Error(error);
@@ -111,6 +114,15 @@ class UsersRepo {
             throw new Error(error);
         }
     }
+
+    //hashing a password before saving it to the database
+    async _preSave(user) {
+        try {
+            user.password = bcrypt.hash(user.password, 10);
+        } catch (err){
+            throw new Error(err);
+        }
+    };
 }
 
 module.exports = UsersRepo;
