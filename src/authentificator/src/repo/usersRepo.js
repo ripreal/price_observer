@@ -27,35 +27,66 @@ class UsersRepo {
             TableName: TABLE_NAME,
             Item: userData
         };
-        return await this._docClient.put(params).promise();
+        try {
+            await this._docClient.put(params).promise();
+        } catch (error) {
+            throw new Error(error);
+        }
     }
 
-    get(email) {
+    async get(key) {
         
         let params = {
             TableName: TABLE_NAME,
-            Key: {'email': email}
+            Key: key,
         };
-        return this._docClient.get(params).promise();
+        let item = null;
+        try {
+            let result = await this._docClient.get(params).promise();
+            item = result.Item;
+        } catch (error) {
+            throw new Error(error);
+        }
+        return item;
     }
 
-    delete(email) {
-        
+    async delete(email) {
         var params = {
             TableName: TABLE_NAME,
             Key:{
                 "email": email,
             }
         };
-        return this._docClient.delete(params).promise();
+        try {
+            await this._docClient.delete(params).promise();
+        } catch(error) {
+            throw new Error(error);
+        }
+    }
+
+    
+    async list() {
+        var params = {
+            TableName : TABLE_NAME,
+        };
+        let result = [];
+        try {
+            let result = await this._docClient.scan(params).promise()
+        } catch(error) {
+            throw new Error(error);
+        }
+        return result;
     }
 
     async deleteUsersTable() {
-       
         let params = {
             TableName : TABLE_NAME
         };
-        return await this._dynamodb.deleteTable(params).promise();
+        try {
+            await this._dynamodb.deleteTable(params).promise();
+        } catch (error) {
+            throw new Error(error);
+        }
     }
 
     async createSheme() {
@@ -74,7 +105,11 @@ class UsersRepo {
             }
         };
 
-        return await this._dynamodb.createTable(params).promise();
+        try {
+            await this._dynamodb.createTable(params).promise();
+        } catch (error) {
+            throw new Error(error);
+        }
     }
 }
 

@@ -29,12 +29,29 @@ app.listen(3001, function () {
 });
 
 async function test() {
+    let uService = new UserService();
+
     let repo = new UsersRepo();
     try {
-        await repo.put("");
+        let data = await repo.list();
+    } catch(error) {
+        console.log(error);
+    }
+
+    let userData = uService.emptyUser();
+    userData.username = 'ripreal';
+    userData.email = 'mail@host.ru';
+    userData.password = '12345';
+    userData.passwordconf   = '12345';
+    try {
+        await uService.createUser(userData);
+        let user = await uService.findOne(userData.email);
+        let t1 = "";
+
     } catch(err) {
         console.log(err);
     }
-    let t1= "";
+    let t2 = "";
 }
-test();
+//test();
+
