@@ -5,7 +5,15 @@ export default class LoginForm extends PureComponent {
 
     constructor(props) {
         super(props);
-        this.state = { visible: props.visible };
+        this.state = { visible: false};
+    }
+
+    componentDidMount() {
+        this.props.onRef(this)
+      }
+
+    componentWillUnmount() {
+        this.props.onRef(undefined)
     }
 
     show = () => {
@@ -34,7 +42,7 @@ export default class LoginForm extends PureComponent {
                     visible={visible}
                     onHide={this.hide}
                     actions={actions}
-                    width={300}
+                    width={350}
                     title="Login to app"
                     titleClassName='u-loginDialogHeader'
                     contentClassName='u-loginDialogBody'

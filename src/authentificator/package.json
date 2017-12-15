@@ -1,23 +1,19 @@
 {
-  "name": "authentificator",
-  "version": "1.0.0",
-  "description": "",
-  "main": "src/app.js",
-  "author": "",
-  "license": "ISC",
+  "name": "Elastic-Beanstalk-Sample-App",
+  "version": "0.0.1",
+  "private": true,
   "dependencies": {
-    "all": "0.0.0",
-    "aws-sdk": "^2.167.0",
-    "bcrypt": "^1.0.3",
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2",
+    "ejs": "latest",
+    "aws-sdk": "latest",
+    "express": "latest",
+    "body-parser": "latest",
     "jest": "^21.2.1",
     "jest-cli": "^21.2.1",
-    "nodemon": "^1.12.5"
+    "nodemon": "^1.12.5",
+    "object-hash": "^1.2.0"
   },
   "scripts": {
-    "start": "nodemon src/app",
-    "watch": "nodemon app && mongod",
+    "start": "node app.js",
     "test": "jest"
   }
 }

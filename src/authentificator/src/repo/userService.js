@@ -1,12 +1,13 @@
 
 const UsersRepo = require('./usersRepo');
-const bcrypt = require('bcrypt');
+const APP_PROFILES = require('../constants/appProfiles');
 
 class UserService {
 
     constructor(usersRepo) {
         if (!usersRepo) {
-            this._usersRepo = new UsersRepo();
+            let profile = APP_PROFILES[process.env.REGION] || APP_PROFILES["TEST"];
+            this._usersRepo = new UsersRepo(profile);
        }
         else {
             this._usersRepo = usersRepo;
@@ -14,24 +15,26 @@ class UserService {
     }   
 
     async createUser(userData) {
+        let user = userData;
         try {
-            await this._usersRepo.put(userData);
-        } catch(error) {
-            throw new Error(error);
-        }
-    }
-
-    async findOne(email) {
-        let user = null;
-        try {
-            user = await this._usersRepo.get({'email':email});
+            user = await this._usersRepo.put(user);
         } catch(error) {
             throw new Error(error);
         }
         return user;
     }
 
-    async authenticate(email, password, callback) {
+    async findOne(email) {
+        let user = null;
+        try {
+            user = await this._usersRepo.get(email);
+        } catch(error) {
+            throw new Error(error);
+        }
+        return user;
+    }
+
+    async authenticate(email, password) {
         let user = null;
         try {
             user = await this.findOne(email);
@@ -41,14 +44,20 @@ class UserService {
         } catch (error) {
             throw new Error(error);
         }
+        return user;
+    }
 
-        bcrypt.compare(password, user.password, function (err, result) {
-            callback(err, result);
-        });
+    async delete(email) {
+        try {
+            await this._usersRepo.delete(email);
+        } catch (error) {
+            throw new Error(error);
+        }
     }
 
     emptyUser() {
         return {
+            'token': '',
             'username': '',
             'password':'',
             'email':'', 

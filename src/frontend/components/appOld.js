@@ -27,6 +27,7 @@ export default class App extends PureComponent {
         this.state = {
             renderNode: null,
             visible: true,
+            visibleLoginForm: false,
             key: inboxListItems[0].key,
             page: inboxListItems[0].componentPage,
             primaryText: inboxListItems[0].primaryText
@@ -57,8 +58,12 @@ export default class App extends PureComponent {
         this.setState({ renderNode: document.getElementById('navigation-drawer-demo') });
     };
 
+    onLoginClick() {
+        this.child.show();
+    } 
+
     render() {
-        const { visible, page, renderNode, primaryText } = this.state;
+        const { visible, visibleLoginForm, page, renderNode, primaryText } = this.state;
         return (
             <div>
                 <Button raised onClick={this.show}>Open the Demo</Button>
@@ -78,13 +83,11 @@ export default class App extends PureComponent {
                         tabletDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT_MINI}
                         desktopDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT_MINI}
                         toolbarTitle= {primaryText}
-                        toolbarActions={<Button href="/login" flat secondary swapTheming>Login</Button>}
+                        toolbarActions={<Button onClick={this.onLoginClick.bind(this)} flat secondary swapTheming>Login</Button>}
                         contentId="main-demo-content"
                         contentClassName="md-grid">
                             <h2 className="md-cell md-cell--12">{page} </h2>
-                            <Switch/>
-                                <Route path='/login' render={(props) => <LoginForm visible={true}/>}/>
-                            <Switch/>
+                            <LoginForm onRef={ref => (this.child = ref)}/>
                     </NavigationDrawer>
                 </DialogContainer>
             </div>

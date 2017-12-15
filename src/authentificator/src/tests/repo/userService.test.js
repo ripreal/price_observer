@@ -1,16 +1,11 @@
 
 const UserService = require('../../repo/userService'); 
 const UsersRepo = require('../../repo/usersRepo'); 
-
-const asyncMiddleware = fn =>
-(userData) => {
-  Promise.resolve(fn(userData))
-    .catch(next);
-};
+const APP_PROFILES = require('../../constants/appProfiles');
 
 it('testCRUD_User', async () => {
     
-    let repo = new UsersRepo();
+    let repo = new UsersRepo(APP_PROFILES.TEST);
     try {
         await repo.deleteUsersTable();
     } catch(error) {
@@ -52,5 +47,14 @@ it('testCRUD_User', async () => {
         console.log(error);
         expect(error).toBeNull();
     }
+
+    // TEST DELETE 
     
-});
+    try {
+        await uService.delete(userData.email);
+    } catch (error) {
+        console.log(error);
+        expect(error).toBeNull();
+    }
+
+}, 99999);
