@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "ejs": "latest",
     "aws-sdk": "latest",
-    "express": "latest",
     "body-parser": "latest",
+    "ejs": "latest",
+    "express": "latest",
     "jest": "^21.2.1",
     "jest-cli": "^21.2.1",
     "nodemon": "^1.12.5",
