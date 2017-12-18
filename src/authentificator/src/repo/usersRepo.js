@@ -8,6 +8,14 @@ class UsersRepo {
 
     constructor(profile) {
 
+        if (profile == APP_PROFILES.TEST) {
+            AWS.config = new AWS.Config();
+            AWS.config.accessKeyId = userSettings.AWS.ACCESS_KEY_ID;
+            AWS.config.secretAccessKey = userSettings.AWS.SECRET_ACCESS_KEY;
+            AWS.config.region = userSettings.REGION;
+            AWS.config.endpoint = userSettings.DYNAMO_DB.SERVER;
+        }
+
         this._dynamodb = new AWS.DynamoDB();
         this._docClient = new AWS.DynamoDB.DocumentClient();
     }

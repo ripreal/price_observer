@@ -13,7 +13,6 @@ it('testCRUD_User', async () => {
     }
     
     // TEST TABLE
-
     try {
         await repo.createSheme();
     } catch (error) {
@@ -21,7 +20,7 @@ it('testCRUD_User', async () => {
         expect(error).toBeNull();
     }
     
-    let uService = await new UserService(repo);
+    let uService = new UserService(repo);
 
     let userData = uService.emptyUser();
     userData.username = 'ripreal';
@@ -30,7 +29,6 @@ it('testCRUD_User', async () => {
     userData.passwordconf   = '12345';
 
     // TEST PUT
-
     try {
         await uService.createUser(userData);
     } catch (error) {
@@ -39,17 +37,25 @@ it('testCRUD_User', async () => {
     }
 
     // TEST GET
-
+    let user = null;
     try {
-        let user = await uService.findOne(userData.email);
+        user = await uService.authenticate(userData.email, userData.password);
         expect(user.username).toBe(userData.username);
     } catch (error) {
         console.log(error);
         expect(error).toBeNull();
     }
 
+    // TEST AUTHENTIFICATE 
+     try {
+        let authentificated = uService.authentificated(user.token);
+        expect(authentificated).toBe(true);
+    } catch (error) {
+        console.log(error);
+        expect(error).toBeNull();
+    }
+
     // TEST DELETE 
-    
     try {
         await uService.delete(userData.email);
     } catch (error) {
@@ -58,3 +64,4 @@ it('testCRUD_User', async () => {
     }
 
 }, 99999);
+

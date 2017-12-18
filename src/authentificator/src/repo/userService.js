@@ -12,6 +12,7 @@ class UserService {
         else {
             this._usersRepo = usersRepo;
         }
+        this._activeSessions = [];
     }   
 
     async createUser(userData) {
@@ -41,18 +42,27 @@ class UserService {
             if (typeof user != 'object' ) {
                 throw new Error('User not found!');
             }
+            this._activeSessions.push(user.token);
         } catch (error) {
             throw new Error(error);
         }
+        
         return user;
     }
 
     async delete(email) {
         try {
+            let user = await this.findOne((email));
+            this._activeSessions.delete([user.token]);
             await this._usersRepo.delete(email);
         } catch (error) {
             throw new Error(error);
         }
+    }
+
+    authentificated(token) {
+        let typ = typeof this._activeSessions.find((val) => val == token);
+        return typ !== 'undefined';
     }
 
     emptyUser() {
