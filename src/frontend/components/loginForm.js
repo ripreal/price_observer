@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Button, DialogContainer, TextField, FontIcon, SVGIcon, Checkbox } from 'react-md';
+import AuthAPI from '../api/authAPI';
 
 export default class LoginForm extends PureComponent {
 
@@ -24,6 +25,10 @@ export default class LoginForm extends PureComponent {
         this.setState({ visible: false });
     };
 
+    login = () => {
+        AuthAPI.login();
+    }
+
     render() {
         const { visible } = this.state;
         // Actions can either be an object of props to build a Button,
@@ -33,7 +38,7 @@ export default class LoginForm extends PureComponent {
 
         const actions = [];
         actions.push(<Button flat primary onClick={this.hide}>Cancel</Button>);
-        actions.push(<Button flat secondary swapTheming onClick={this.hide}>Login</Button>);
+        actions.push(<Button flat secondary swapTheming onClick={this.login}>OK</Button>);
 
         return (
             <div>

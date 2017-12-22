@@ -1,25 +1,14 @@
+
 import React, { PureComponent } from 'react';
-
-import TopNav from './topNav';
-import FloatToolBar from './floatToolBar';
-import PageContent from './pageContent';
-import TopBar from './topBar';
-import inboxListItems from '../constants/inboxListItems';
-import WebFontLoader from 'webfontloader';
+import { Route, Switch } from 'react-router-dom';
+import { Button, DialogContainer, NavigationDrawer, SVGIcon } from 'react-md';
 import '../css/app.css';
-import { TextField, Avatar, Button, IconSeparator, FontIcon, SVGIcon } from 'react-md';
+import WebFontLoader from 'webfontloader';
+import inboxListItems from '../constants/inboxListItems';
+import LoginForm from './loginForm';
+import FloatToolBar from './floatToolBar';
 
-WebFontLoader.load({
-    google: {
-      families: ['Roboto', 'Roboto']
-    }
-  });
-
-  const style = {
-    top: 80,
-  }
-
-  export default class App extends PureComponent {
+export default class App extends PureComponent {
     constructor() {
         super();
 
@@ -31,15 +20,16 @@ WebFontLoader.load({
 
             return {
                 ...item,
-                onClick: () => this.setPage(item.key, item.componentPage, item.primaryText),
+                onClick: () => this.setPage(item.key, item.componentpage, item.primaryText),
             };
         });
 
         this.state = {
             renderNode: null,
             visible: true,
+            visibleLoginForm: false,
             key: inboxListItems[0].key,
-            page: inboxListItems[0].componentPage,
+            page: inboxListItems[0].componentpage,
             primaryText: inboxListItems[0].primaryText
         };
     }
@@ -68,12 +58,14 @@ WebFontLoader.load({
         this.setState({ renderNode: document.getElementById('navigation-drawer-demo') });
     };
 
+    onLoginClick() {
+        this.child.show();
+    } 
+
     render() {
-        const { visible, page, renderNode, primaryText } = this.state;
+        const { visible, visibleLoginForm, page, renderNode, primaryText } = this.state;
         return (
-            /*
             <div>
-                
                 <Button raised onClick={this.show}>Open the Demo</Button>
                 <DialogContainer
                     id="navigation-drawer-demo"
@@ -91,22 +83,14 @@ WebFontLoader.load({
                         tabletDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT_MINI}
                         desktopDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT_MINI}
                         toolbarTitle= {primaryText}
-                        toolbarActions={[<Button icon onClick={this.hide}><FaDatabase/></Button>,  <Button icon onClick={this.hide}>close</Button>]}
+                        toolbarActions={<Button onClick={this.onLoginClick.bind(this)} flat secondary swapTheming>Login</Button>}
                         contentId="main-demo-content"
                         contentClassName="md-grid">
-                        <h2 className="md-cell md-cell--12">{page}</h2>
-                        <section className="md-text-container md-cell md-cell--12">
-                        </section>
+                            <h2 className="md-cell md-cell--12">{page} </h2>
+                            <LoginForm onRef={ref => (this.child = ref)}/>
                     </NavigationDrawer>
                 </DialogContainer>
-               
             </div>
-            */
-            <div style={style}>
-                <TopBar height={style.top - 30}/>
-                <PageContent />
-            </div>
-     
         );
     }
 }

@@ -4,13 +4,13 @@ import { FontIcon } from 'react-md';
 export default [{
     key: 'products',
     primaryText: 'Products',
-    componentPage: '<Products/>',
+    componentpage: '<Products/>',
     leftIcon: <FontIcon>inbox</FontIcon>,
     active: true,
 }, {
     key: 'starred',
     primaryText: 'Starred',
-    componentPage: '<Categories/>',
+    componentpage: '<Categories/>',
     leftIcon: <FontIcon>star</FontIcon>,
 }, {
     key: 'send-mail',

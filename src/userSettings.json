@@ -20,5 +20,6 @@
     },
     "AMAZON_PRODUCT_API": {
 
-    }
+    },
+    "AUTH_SERVER": "http://authentificator.us-east-2.elasticbeanstalk.com"
 }
