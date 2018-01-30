@@ -8,7 +8,7 @@ import inboxListItems from '../constants/inboxListItems';
 import LoginForm from './loginForm';
 import FloatToolBar from './floatToolBar';
 
-export default class App extends PureComponent {
+export default class App extends React.Component {
     constructor() {
         super();
 
@@ -42,7 +42,6 @@ export default class App extends PureComponent {
 
             return { ...item, active: item.key === key };
         });
-
         this.setState({ key, page, primaryText });
     };
 
@@ -58,9 +57,9 @@ export default class App extends PureComponent {
         this.setState({ renderNode: document.getElementById('navigation-drawer-demo') });
     };
 
-    onLoginClick() {
-        this.child.show();
-    } 
+    showLoginForm = () => {
+        this.setState({visibleLoginForm: true});
+    }
 
     render() {
         const { visible, visibleLoginForm, page, renderNode, primaryText } = this.state;
@@ -83,11 +82,11 @@ export default class App extends PureComponent {
                         tabletDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT_MINI}
                         desktopDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT_MINI}
                         toolbarTitle= {primaryText}
-                        toolbarActions={<Button onClick={this.onLoginClick.bind(this)} flat secondary swapTheming>Login</Button>}
+                        toolbarActions={<Button onClick={this.showLoginForm} flat secondary swapTheming>Login</Button>}
                         contentId="main-demo-content"
                         contentClassName="md-grid">
-                            <h2 className="md-cell md-cell--12">{page} </h2>
-                            <LoginForm onRef={ref => (this.child = ref)}/>
+                            <h2 className="md-cell md-cell--12">{page}</h2>
+                            <LoginForm visible={visibleLoginForm}/>
                     </NavigationDrawer>
                 </DialogContainer>
             </div>

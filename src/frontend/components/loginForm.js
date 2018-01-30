@@ -5,15 +5,11 @@ export default class LoginForm extends PureComponent {
 
     constructor(props) {
         super(props);
-        this.state = { visible: false};
+        this.state = {visible: false};
     }
 
-    componentDidMount() {
-        this.props.onRef(this)
-      }
-
-    componentWillUnmount() {
-        this.props.onRef(undefined)
+    componentWillReceiveProps() {
+        this.setState({visible: this.props.visible});
     }
 
     show = () => {
